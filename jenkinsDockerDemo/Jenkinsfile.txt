@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Build Docker Image') {
          	steps {
-         	        bat "docker build -t amankrgupta/jenkins-docker-demo ."
+         	        bat "docker build -f jenkinsDockerDemo/Dockerfile -t amankrgupta/jenkins-docker-demo ."
          	        echo 'Building docker image...'
          	     }
         }

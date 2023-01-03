@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout Code') {
+            steps {
+              checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/amankrgupta97/jenkins-docker-demo.git']])
+              echo 'Checkout'
+            }
+        }
+        stage('Build Maven') {
+            steps {
+                bat "mvn -f jenkinsDockerDemo/pom.xml clean install "
+                echo 'Building...'
+                }
+        }
+        stage('Build Docker Image') {
+         	steps {
+         	        bat"wsl docker build -t amankrgupta/jenkins-docker-demo ."
+         	        echo 'Building docker image...'
+         	     }
+        }
+     }
+ }

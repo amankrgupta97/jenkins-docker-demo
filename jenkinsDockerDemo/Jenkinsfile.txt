@@ -25,5 +25,13 @@ pipeline {
          	    echo 'Building docker image...'
          	   }
         }
-     }
+        stage('push image to hub'){
+        steps{
+        	withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+        		bat "docker login -u amankrgupta -p ${dockerhubpwd}"
+        		}
+        	bat "dcoker push amankrgupta/jenkins-docker-demo"
+        	}
+        }
+    }
  }

@@ -19,9 +19,11 @@ pipeline {
         }
         stage('Build Docker Image') {
          	steps {
-         	        bat "docker build -f jenkinsDockerDemo/Dockerfile -t amankrgupta/jenkins-docker-demo ."
-         	        echo 'Building docker image...'
+         		dir('C:\\Users\\amank\\.jenkins\\workspace\\jenkins-docker-pipeline\\jenkinsDockerDemo'){
+         	    	bat "docker build -t amankrgupta/jenkins-docker-demo ."
          	     }
+         	    echo 'Building docker image...'
+         	   }
         }
      }
  }

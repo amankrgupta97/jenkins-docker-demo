@@ -36,7 +36,7 @@ pipeline {
         stage('sonar scan'){
         steps{
         	withSonarQubeEnv('sonar'){
-        		bat "mvn -f jenkinsDockerDemo/pom.xml clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar"
+        		bat "mvn -f jenkinsDockerDemo/pom.xml org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar"
         	}
         }
         }
